@@ -3,8 +3,13 @@ import socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(("", 8080))
 
-while True:
+name = ""
+while name == "":
+    name = input("Enter your name: ")
 
-    msg = input("you:")
+while True:
+    msg = input("%s: " % name)
+
+    msg = name + ": " + msg
 
     client.send(msg.encode())
